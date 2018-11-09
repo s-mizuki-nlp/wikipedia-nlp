@@ -7,7 +7,9 @@
 import os, sys, io
 import spacy
 
-model = spacy.load("en_core_web_sm")
+# model = spacy.load("en_core_web_sm")
+model = spacy.load("en_core_web_sm", disable=["tagger","parser","ner"])
+model.add_pipe(model.create_pipe('sentencizer'))
 
 with io.open(sys.argv[1]) as ifs:
     for line in ifs:
