@@ -13,6 +13,6 @@ model.add_pipe(model.create_pipe('sentencizer'))
 
 with io.open(sys.argv[1]) as ifs:
     for line in ifs:
-        doc = model(line)
+        doc = model(line.strip())
         for sent in doc.sents:
             print(sent.text)
